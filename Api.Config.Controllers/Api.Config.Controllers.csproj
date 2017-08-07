@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent>xcopy "C:\Users\matthewa\Desktop\Api.Config\Api.Config.Controllers\Api.Config.Controllers.xml" "C:\Users\matthewa\Desktop\Api.Config\Api.Config.Startup\Api.Config.Controllers.xml*" /Y</PostBuildEvent>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Api.Config.Controllers.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Api.Config.Controllers.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Exceptionless" Version="4.0.1934" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Api.Config.CSServiceLayer\Api.Config.CSServiceLayer.csproj" />
+  </ItemGroup>
+
+</Project>

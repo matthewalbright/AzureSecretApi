@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api.Config.Controllers</name>
+    </assembly>
+    <members>
+        <member name="T:Api.Config.Controllers.ConfigController">
+            <summary>
+            Config Controller
+            </summary>
+        </member>
+        <member name="M:Api.Config.Controllers.ConfigController.#ctor(Microsoft.Extensions.Logging.ILogger,Api.Config.CSServiceLayer.Interfaces.IConfigService)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Api.Config.Controllers.ConfigController.GetConfig(Api.Config.CSServiceLayer.Models.ConfigModel)">
+            <summary>
+            Get Single Config
+            </summary>
+        </member>
+        <member name="M:Api.Config.Controllers.ConfigController.SetConfig(Api.Config.CSServiceLayer.Models.ConfigModel)">
+            <summary>
+            Sets a Single Config (Create or Edit)
+            </summary>
+        </member>
+        <member name="T:Api.Config.Controllers.ExceptionController">
+            <summary>
+            System Controller
+            </summary>
+        </member>
+        <member name="M:Api.Config.Controllers.ExceptionController.#ctor(Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Api.Config.Controllers.ExceptionController.HandleException">
+            <summary>
+            Exception Handler
+            </summary>
+        </member>
+    </members>
+</doc>

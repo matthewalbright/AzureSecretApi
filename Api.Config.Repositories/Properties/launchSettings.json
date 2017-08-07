@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Api.Config.Repositories": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "clientId": "1fcdac87-8a16-4b7f-8950-deb7fcbb71fc"
+      }
+    }
+  }
+}
