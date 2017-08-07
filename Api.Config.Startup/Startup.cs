@@ -15,7 +15,6 @@ using System.Security.Authentication;
 using Api.Config.Repositories.Utilities;
 using Api.Config.Services;
 using Api.Config.SRServiceLayer.Interfaces;
-using Api.Config.Startup.Authorization;
 using Api.Config.Startup.Middleware;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
@@ -29,8 +28,6 @@ namespace Api.Config.Startup
         protected IConfigurationRoot Configuration { get; set; }
         protected IHostingEnvironment CurrentEnvironment { get; set; }
         protected ILoggerFactory LoggerFactory { get; set; }
-        protected AuthorizationSettings AuthorizationSettings { get; set; }
-        protected JwtBearerOptions JwtBearerOptions { get; set; }
 
         public const string ServiceName = "Api.Config";
         private const string DefaultCorsPolicy = "DefaultCorsPolicy";
@@ -66,8 +63,6 @@ namespace Api.Config.Startup
 
             ConfigureSerilog();
 
-            ConfigureAuthorization();
-
             ConfigureDepenencies(services);
 
             AddCors(services, DefaultCorsPolicy);
@@ -91,8 +86,6 @@ namespace Api.Config.Startup
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseCors(DefaultCorsPolicy);
-
-            app.UseJwtBearerAuthentication(JwtBearerOptions);
 
             app.UseMvc(routes =>
             {
@@ -119,14 +112,6 @@ namespace Api.Config.Startup
             app.UseUnknownRoute();
         }
 
-        protected virtual void ConfigureAuthorization()
-        {
-            var authorizationSettings = new AuthorizationSettings();
-            Configuration.GetSection("AuthorizationSettings").Bind(authorizationSettings);
-
-            ILogger logger = LoggerFactory.CreateLogger("AuthorizationSetup");
-            JwtBearerOptions = AuthorizationSetup.GetJwtBearerOptions(authorizationSettings, logger);
-        }
 
         private void ConfigureSwagger(IServiceCollection services)
         {
